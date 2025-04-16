@@ -1,0 +1,63 @@
+
+Bitwise Encoding in Poker Hand Scoring (C++ Module)
+===================================================
+
+This file explains how the poker hand scoring system works in the C++ module using bitwise operations.
+
+Overview
+--------
+
+We use two main bitwise operations:
+
+1. Bitwise Shift Left (`<<`)
+2. Bitwise OR (`|`)
+
+These are used to encode a hand's rank and key cards into a single integer score, so that we can easily compare hands.
+
+Bitwise Shift Left (`<<`)
+--------------------------
+The left shift operator `<<` shifts the bits of a number to the left, multiplying it by a power of 2.
+
+Examples:
+    1 << 1  = 2     (1 * 2^1)
+    1 << 2  = 4     (1 * 2^2)
+    3 << 4  = 48    (3 * 2^4 = 3 * 16)
+
+Bitwise OR (`|`)
+----------------
+The bitwise OR operator `|` compares each bit of two numbers. If either bit is 1, the result is 1.
+
+Example:
+    5  = 0101 (binary)
+    12 = 1100
+    5 | 12 = 1101 = 13
+
+Encoding Example
+----------------
+
+Let’s consider this example score calculation:
+
+    score = (3 << 20)      // 3 = THREE_OF_A_KIND
+          | (12 << 12)     // 12 = Ace (trip rank)
+          | (11 << 8)      // 11 = Queen (1st kicker)
+          | (8 << 4)       // 8 = Ten (2nd kicker)
+
+Now we calculate:
+
+    (3 << 20)  = 3 * 2^20 = 3,145,728
+    (12 << 12) = 12 * 2^12 = 49,152
+    (11 << 8)  = 11 * 2^8 = 2,816
+    (8 << 4)   = 8 * 2^4 = 128
+
+    Total score = 3,145,728 + 49,152 + 2,816 + 128 = 3,270,656
+
+This integer encodes:
+- Hand Rank (THREE_OF_A_KIND)
+- Main card: Ace
+- Kickers: Queen and Ten
+
+Benefits
+--------
+
+This encoding method allows for a compact representation of poker hand strengths. You can compare two hands by directly comparing their integer scores, without needing complex tie-breaking logic.
+
