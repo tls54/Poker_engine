@@ -1,37 +1,44 @@
 import sys 
 import os
 # Add project root to PYTHONPATH dynamically
+print(os.getcwd())
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+print(sys.path)
 
 from engine.python.Back_end.hand_eval import evaluate_hand #type: ignore
 from engine.python.utils import hand_to_cpp
 from engine.python.Back_end.Cards_and_deck import Card
 
-NUM_PLAYERS = 2
+
 
 # Define player hole cards to test rare hand combos
-card1 = Card('2', 's')
-card2 = Card('3', 'd')
+card1 = Card('2', 'h')
+card2 = Card('2', 'd')
 
 card3 = Card('K', 's')
-card4 = Card('2', 'd')
+card4 = Card('A', 's')
 
-card5 = Card('J', 'd')
-card6 = Card('K', 'd')
-card7 = Card('Q', 'd')
-card8 = Card('T', 'd')
-card9 = Card('5', 'c')
+
+
+
+card5 = Card('Q', 's')
+card6 = Card('J', 's')
+card7 = Card('3', 's')
+card8 = Card('3', 'd')
+card9 = Card('3', 'h')
 
 
 player1 = [card1, card2]
 player2 = [card3, card4]
+
 player_hands = [player1, player2]
+
+NUM_PLAYERS = len(player_hands)
 
 board = [card5, card6, card7, card8, card9]
 
 # Concat player hole cards and board 
 player_full_hands = [player_hand + board for player_hand in player_hands]
-
 
 # Convert to cpp representations
 converted_hands = [hand_to_cpp(hand) for hand in player_full_hands]

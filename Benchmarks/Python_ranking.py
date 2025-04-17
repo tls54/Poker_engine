@@ -47,7 +47,7 @@ def encode_score(rank, key_cards, kickers):
     score = (rank << 20)
     shift = 12
     all_cards = key_cards + kickers
-    for r in all_cards[:4]:  # Only use the top 4 cards for encoding
+    for r in all_cards[:5]: 
         score |= (r << shift)
         shift -= 4
     return score

@@ -130,6 +130,7 @@ std::pair<int, std::string> evaluate_hand(const std::vector<int>& cards) {
             // Otherwise, regular flush
             std::vector<int> top5(suited.begin(), suited.begin() + 5);
 
+            // Read out flush cards for debugging
             std::cout << "Flush cards used for scoring: ";
             for (int r : top5) std::cout << r << " ";
             std::cout << std::endl;
@@ -183,6 +184,26 @@ std::pair<int, std::string> evaluate_hand(const std::vector<int>& cards) {
         }
         std::sort(kickers.rbegin(), kickers.rend());
         return std::make_pair(encode_score(FOUR_OF_A_KIND, {quad_rank}, kickers), rank_to_string(FOUR_OF_A_KIND));
+    }
+
+        if (freq_rank[0].first == 3) {
+        int trips_rank = freq_rank[0].second;
+        int pair_rank = -1;
+
+        // Look for second pair or another trips to use as pair
+        for (size_t i = 1; i < freq_rank.size(); ++i) {
+            if (freq_rank[i].first >= 2) {
+                pair_rank = freq_rank[i].second;
+                break;
+            }
+        }
+
+        if (pair_rank != -1) {
+            return std::make_pair(
+                encode_score(FULL_HOUSE, {trips_rank, pair_rank}, {}),
+                rank_to_string(FULL_HOUSE)
+            );
+        }
     }
 
     if (freq_rank[0].first == 3) {
