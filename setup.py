@@ -5,7 +5,7 @@ import sys
 import platform
 
 # Extra compiler args depending on platform
-extra_compile_args = ["-std=c++11"]
+extra_compile_args = ["-std=c++17"]
 extra_link_args = []
 
 if platform.system() == "Darwin":  # macOS
