@@ -6,7 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import random
 from time import perf_counter
 from Benchmarks.Python_ranking import evaluate_hand as python_evaluate_hand, card_str_to_int
-from engine.python.Back_end.hand_eval import evaluate_hand  # type: ignore
+from poker_engine.python.Back_end.hand_eval import evaluate_hand  # type: ignore
 
 RANKS = '23456789TJQKA'
 SUITS = 'cdhs'

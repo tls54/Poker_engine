@@ -1,13 +1,10 @@
 import sys 
 import os
-# Add project root to PYTHONPATH dynamically
-print(os.getcwd())
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-print(sys.path)
 
-from engine.python.Back_end.hand_eval import evaluate_hand #type: ignore
-from engine.python.utils import hand_to_cpp
-from engine.python.Back_end.Cards_and_deck import Card
+
+from poker_engine.hand_eval import evaluate_hand 
+from poker_engine.utils import hand_to_cpp
+from poker_engine.back_end.Cards_and_deck import Card
 
 
 

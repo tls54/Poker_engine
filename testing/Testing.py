@@ -3,9 +3,9 @@ import os
 # Add project root to PYTHONPATH dynamically
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from engine.python.Back_end.hand_eval import evaluate_hand #type: ignore
-from engine.python.utils import hand_to_cpp
-from engine.python.Back_end.Cards_and_deck import Deck
+from poker_engine.hand_eval import evaluate_hand 
+from poker_engine.utils import hand_to_cpp
+from poker_engine.back_end.Cards_and_deck import Card, Deck
 from time import perf_counter
 
 NUM_PLAYERS = 6

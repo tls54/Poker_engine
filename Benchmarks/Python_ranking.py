@@ -2,6 +2,8 @@ from collections import Counter
 from itertools import combinations
 from time import perf_counter
 
+
+
 # Constants
 RANKS = '23456789TJQKA'
 SUITS = 'cdhs'
