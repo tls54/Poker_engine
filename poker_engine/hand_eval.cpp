@@ -131,9 +131,9 @@ std::pair<int, std::string> evaluate_hand(const std::vector<int>& cards) {
             std::vector<int> top5(suited.begin(), suited.begin() + 5);
 
             // Read out flush cards for debugging
-            std::cout << "Flush cards used for scoring: ";
-            for (int r : top5) std::cout << r << " ";
-            std::cout << std::endl;
+            //std::cout << "Flush cards used for scoring: ";
+            //for (int r : top5) std::cout << r << " ";
+            //std::cout << std::endl;
 
             return std::make_pair(encode_score(FLUSH, {}, top5), rank_to_string(FLUSH));
         }

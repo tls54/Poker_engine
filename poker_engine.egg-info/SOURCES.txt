@@ -12,3 +12,5 @@ poker_engine.egg-info/top_level.txt
 poker_engine/back_end/Cards_and_deck.py
 poker_engine/back_end/Player.py
 poker_engine/back_end/__init__.py
+poker_engine/preset_ranges/__init__.py
+poker_engine/preset_ranges/range_loader.py

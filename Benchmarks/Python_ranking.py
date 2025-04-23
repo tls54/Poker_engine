@@ -47,7 +47,7 @@ def is_straight(ranks):
 
 def encode_score(rank, key_cards, kickers):
     score = (rank << 20)
-    shift = 12
+    shift = 16
     all_cards = key_cards + kickers
     for r in all_cards[:5]: 
         score |= (r << shift)
