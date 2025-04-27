@@ -62,16 +62,16 @@ def benchmark_choose(n:int, k:int, warmup:int=10_000, main:int=1_000_000):
 
 if __name__ == '__main__':
     players = 6
-    cards_left = 52 - (2 * players) - 3 # full deck minus hole cards and flop cards
+    cards_left = 52 - (2 * players)  # full deck minus hole cards 
+    print(f'Cards left: {cards_left}')
     print('Number of possible outcomes in a 6max game after flop:')
+
+    # Number of unique boards 
+    num_boards = Choose(cards_left, 5)
     
-    small_choose = Choose(cards_left, 2)
+    print(f'Total possible 5 card boards in 6max: {num_boards:,}')
+    print(f'Total calls to evalutate_hand: {players * num_boards:,}')
     
-    big_choose = Choose(52,5)
-    
-    print(f'Total possible 5 card hands:{small_choose}')
-    print(f'Total possible 5 card hands: {big_choose:,}')
-    
-    small_durations = benchmark_choose(cards_left, 2)
-    big_durations = benchmark_choose(52, 5)
+    #small_durations = benchmark_choose(cards_left, 2)
+    #big_durations = benchmark_choose(52, 5)
 
