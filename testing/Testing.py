@@ -1,7 +1,3 @@
-import sys 
-import os
-
-
 from poker_engine.hand_eval import evaluate_hand # type: ignore
 from poker_engine.utils import hand_to_cpp
 from poker_engine.back_end.Cards_and_deck import Card, Deck

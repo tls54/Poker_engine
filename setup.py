@@ -8,10 +8,11 @@ import platform
 extra_compile_args = ["-std=c++17"]
 extra_link_args = []
 
-if platform.system() == "Darwin":  # macOS
+extra_compile_args = ["-O3", "-std=c++17"]
+if platform.system() == "Darwin":
     extra_compile_args.append("-stdlib=libc++")
 elif platform.system() == "Windows":
-    extra_compile_args = ["/std:c++17"]  # For MSVC
+    extra_compile_args = ["/O2", "/std:c++17"]  # Use /O2 for MSVC (equivalent to -O2); /Ox includes /O2
 
 ext_modules = [
     Extension(

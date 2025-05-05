@@ -2,6 +2,7 @@ from time import perf_counter
 import statistics
 import matplotlib.pyplot as plt
 
+
 def factorial(n: int) -> int:
     if n < 0:
         print('The number must be a positive integer!')

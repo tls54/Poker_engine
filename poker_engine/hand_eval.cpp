@@ -263,6 +263,41 @@ std::pair<int, std::string> evaluate_hand(const std::vector<int>& cards) {
     return std::make_pair(encode_score(HIGH_CARD, {}, all_ranks), rank_to_string(HIGH_CARD));
 }
 
+
+
+// batch evaluation logic
+std::vector<std::vector<int>> batch_evaluate(const std::vector<std::array<std::array<int, 7>, 6>>& games) {
+    std::vector<std::vector<int>> results;
+    results.reserve(games.size());
+
+    for (const auto& game : games) {
+        std::vector<std::pair<int, int>> scores; // (score, player index)
+
+        for (int i = 0; i < 6; ++i) {
+            int score = evaluate_hand(std::vector<int>(game[i].begin(), game[i].end())).first;
+            scores.emplace_back(score, i);
+        }
+
+        // Find the max score
+        int max_score = std::max_element(scores.begin(), scores.end())->first;
+
+        std::vector<int> winners;
+        for (const auto& [score, idx] : scores) {
+            if (score == max_score) {
+                winners.push_back(idx);
+            }
+        }
+
+        results.push_back(winners);
+    }
+
+    return results;
+}
+
+
+
+
 PYBIND11_MODULE(hand_eval, m) {
     m.def("evaluate_hand", &evaluate_hand, "Evaluate a 7-card poker hand");
+    m.def("batch_evaluate", &batch_evaluate, "Batch evaluate games to determine winners");
 }

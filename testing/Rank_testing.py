@@ -1,7 +1,3 @@
-import sys 
-import os
-
-
 from poker_engine.hand_eval import evaluate_hand 
 from poker_engine.utils import hand_to_cpp
 from poker_engine.back_end.Cards_and_deck import Card
@@ -32,10 +28,10 @@ player_hands = [player1, player2]
 
 NUM_PLAYERS = len(player_hands)
 
-board = [card5, card6, card7, card8, card9]
+board1 = [card5, card6, card7, card8, card9]
 
 # Concat player hole cards and board 
-player_full_hands = [player_hand + board for player_hand in player_hands]
+player_full_hands = [player_hand + board1 for player_hand in player_hands]
 
 # Convert to cpp representations
 converted_hands = [hand_to_cpp(hand) for hand in player_full_hands]
@@ -51,7 +47,7 @@ hand_types = [output[1] for output in outputs]
 winner_index = scores.index(max(scores))
 
 print(f"Player: {player_hands}")
-print(f'Board: {board}')
+print(f'Board: {board1}')
 
 for i in range(NUM_PLAYERS):
     print(f'hand: {player_hands[i]}, type: {hand_types[i]}, score: {scores[i]}')
