@@ -3,7 +3,7 @@ from poker_engine.utils import hand_to_cpp
 from poker_engine.back_end.Cards_and_deck import Card, Deck
 from time import perf_counter
 
-NUM_PLAYERS = 6
+NUM_PLAYERS = 1
 
 deck = Deck()
 
@@ -24,8 +24,8 @@ start = perf_counter()
 outputs = [evaluate_hand(hand) for hand in converted_hands]
 end = perf_counter()
 # Extract scores and hand types
-scores = [output[0] for output in outputs]
-hand_types = [output[1] for output in outputs]
+scores = [output for output in outputs]
+#hand_types = [output[1] for output in outputs]
 
 # Locate winning hand in hands
 winner_index = scores.index(max(scores))
@@ -34,11 +34,11 @@ print(f"Player: {player_hands}")
 print(f'Board: {board}')
 
 for i in range(NUM_PLAYERS):
-    print(f'hand: {player_hands[i]}, type: {hand_types[i]}, score: {scores[i]}')
+    print(f'hand: {player_hands[i]}, score: {scores[i]}')
 
 print('Winner:')
 print(f'Winning hand: {player_hands[winner_index]}')
-print(f"Hand type: {hand_types[winner_index]}")
+#print(f"Hand type: {hand_types[winner_index]}")
 print(f"Score: {scores[winner_index]}")
 print()
 print(f'C++ eval time for {NUM_PLAYERS} players: {end - start}s')

@@ -18,3 +18,12 @@ def card_to_cpp(card):
 
 def hand_to_cpp(cards):
     return [card_to_cpp(c) for c in cards]
+
+
+
+# Testing
+if __name__ == '__main__':
+    print('Testing card_to_cpp and hand_to_cpp functions!')
+
+    
+    

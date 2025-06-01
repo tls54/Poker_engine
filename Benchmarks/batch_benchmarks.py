@@ -21,10 +21,13 @@ formatted_games = random_games.tolist()
 formatted_games = [
     [player for player in game] for game in formatted_games
 ]
+# Flatten: [[hand1, hand2, ..., hand6]] -> [hand1, hand2, ..., hand6]
+flat_hands = [hand for game in formatted_games for hand in game]
+
 
 # Time the batch evaluation
 start = time.perf_counter()
-results = batch_evaluate(formatted_games)
+results = batch_evaluate(flat_hands)
 end = time.perf_counter()
 
 print(f"Evaluated {num_games} games in {end - start:.4f} seconds")

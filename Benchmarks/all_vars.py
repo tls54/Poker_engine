@@ -4,6 +4,8 @@ from poker_engine.utils import hand_to_cpp
 from time import perf_counter
 import statistics
 
+# 
+
 def benchmark_batch(warmup, main, batch_size):
     sub_durations = []
     durations = []
@@ -37,7 +39,7 @@ def benchmark_batch(warmup, main, batch_size):
 
 if __name__ == '__main__':
     # number of unique boards in 6max
-    num_boards = 658008 
+    num_boards = 658008 * 6  # Full 6max gam
     
     durations, sub_durations = benchmark_batch(10000, 20, num_boards)
 
