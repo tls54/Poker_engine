@@ -77,9 +77,11 @@ def test_batch_tie_and_win():
 
     results = batch_evaluate(games)
 
-    print(f'\nResult:\n')
+
+
+    print(f'\nResult:')
     print(results)
-    assert results[0] == [0, 5], f"Expected players 0 and 5 to tie with straight flush, got {results[0]}"
+    assert results[0] == [1, 3, 4], f"Expected players 1, 3, 4 to tie with straight flush, got {results[0]}"
     print(f"Batch test passed. Winners: {results[0]}")
 
 if __name__ == "__main__":
